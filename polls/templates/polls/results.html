@@ -1,0 +1,28 @@
+{% extends 'admin/base.html' %}
+
+{% block title %}Results{% endblock %}
+{% block branding %}
+<a href="{% url 'polls:user_activity' %}">Activity Log</a>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+<a href="{% url 'logout' %}">Logout</a>
+<!--<a href="{% url 'logout' %}"><input type="button" value="Logout" /></a>-->
+{% endblock %}
+
+{% block content %}
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}" />
+
+<h1>{{ question.question_text }}</h1>
+
+<ul>
+{% for choice in question.choice_set.all %}
+    <li>{{ choice.choice_text }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }}</li>
+{% endfor %}
+</ul>
+
+<a href="{% url 'polls:detail' question.id %}">Vote again?</a>
+<!--<a href="{% url 'home' %}"><input type="button" value="HOME" /></a>-->
+<a href="{% url 'polls:index' %}"><img src="{% static "polls/images/home.png" %}" alt="home"/></a>
+
+{% endblock %}

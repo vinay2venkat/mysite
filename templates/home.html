@@ -1,0 +1,65 @@
+{% extends 'admin/base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+
+<div>
+<a href="{% url 'login:register' %}"><h1>Create an Account</h1></a>
+
+<a href="{% url 'login' %}"><h1>Login</h1></a>
+
+</div>
+<h1><b>STATS</b></h1>
+
+{% for question in question_list %}
+       <h3>{{ question.question_text }}</h3>
+       <br>
+       <ul>
+       {% for choice in question.choice_set.all %}
+              <li>{{ choice.choice_text }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }}</li>
+               <br>
+       {% endfor %}
+       </ul>
+{% endfor %}
+<ol>
+{% for tweet in tweets.tweets %}
+       <li>{{ tweet.status }}</li>
+
+{% endfor %}
+</ol>
+
+  <h2>Know your weather</h2>
+  <form method="post">
+    {% csrf_token %}
+    Zipcode : <input type="text" name="zip">
+    <input type="submit">
+  </form>
+<br>
+{% if weather is not None %}
+      {% for weathe in weather.weather %}
+              <h1>{{ weathe.place }}
+              {{ weathe.content }}
+              {{ weathe.tempi }}
+                  {{ weathe.cont }}</h1>
+
+      {% endfor %}
+
+{% endif %}
+
+<h2>Patient ID Knoew</h2>
+  <form method="post">
+    {% csrf_token %}
+    Patient ID : <input type="text" name="patid">
+    <input type="submit">
+  </form>
+<br>
+{% if dc is not None %}
+      {{ dc }}
+{% endif %}
+
+
+
+{% endblock %}
+
+

@@ -1,0 +1,25 @@
+{% extends 'admin/base.html' %}
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}" />
+{% block title %}Your Activity{% endblock %}
+{% block branding %}
+<a href="{% url 'logout' %}">Logout</a>
+
+{% endblock %}
+{% block content %}
+<h1>Your Activity LOG</h1>
+<h3>Total Votes</h3> <h1>{{ totalvotes }}</h1>
+
+<h1>History</h1>
+
+{% for votes in votelog %}
+       <h3>{{ votes.question.question_text }}</h3>
+
+       <li>{{ votes.choice.choice_text }}</li>
+
+{% endfor %}
+
+{% endblock %}
+
+{% block nav-global %}{% endblock %}

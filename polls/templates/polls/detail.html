@@ -1,0 +1,27 @@
+{% extends 'admin/base.html' %}
+
+{% block title %}Details{% endblock %}
+{% block branding %}
+<a href="{% url 'polls:user_activity' %}">Activity Log</a>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+<a href="{% url 'logout' %}">Logout</a>
+<!--<a href="{% url 'logout' %}"><input type="button" value="Logout" /></a>-->
+{% endblock %}
+
+
+{% block content %}
+<h1>{{ question.question_text }}</h1>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="{% url 'polls:vote' question.id %}" method="post">
+{% csrf_token %}
+{% for choice in question.choice_set.all %}
+    <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}" />
+    <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br />
+{% endfor %}
+<input type="submit" value="Vote" />
+<a href="{% url 'polls:index' %}"><input type="button" value="Back to Polls" /></a>
+<a href="{% url 'home' %}"><input type="button" value="HOME" /></a>
+</form>
+{% endblock %}

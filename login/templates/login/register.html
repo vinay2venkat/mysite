@@ -1,0 +1,12 @@
+{% extends 'admin/base.html' %}
+
+{% block title %}LETS CREATE SOME SHIT{% endblock %}
+
+{% block content %}
+  <h2>Create your faggot ACcount</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Register</button>
+  </form>
+{% endblock %}
