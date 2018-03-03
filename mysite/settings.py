@@ -25,7 +25,7 @@ SECRET_KEY = '0ho)bl10%acd3c2fhr!8^-1u5uhg4ed#^p!_&b!64foqw88jp0'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['52.66.177.142']
+ALLOWED_HOSTS = ['52.66.177.142', 'www.vincorporated.tech']
 
 
 # Application definition
