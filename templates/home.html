@@ -1,6 +1,6 @@
 {% extends 'admin/base.html' %}
 
-{% block title %}Home{% endblock %}
+<!--{% block title %}Home{% endblock %}-->
 
 {% block content %}
 
@@ -10,24 +10,8 @@
 <a href="{% url 'login' %}"><h1>Login</h1></a>
 
 </div>
-<h1><b>STATS</b></h1>
 
-{% for question in question_list %}
-       <h3>{{ question.question_text }}</h3>
-       <br>
-       <ul>
-       {% for choice in question.choice_set.all %}
-              <li>{{ choice.choice_text }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }}</li>
-               <br>
-       {% endfor %}
-       </ul>
-{% endfor %}
-<ol>
-{% for tweet in tweets.tweets %}
-       <li>{{ tweet.status }}</li>
 
-{% endfor %}
-</ol>
 
   <h2>Know your weather</h2>
   <form method="post">
@@ -47,25 +31,9 @@
 
 {% endif %}
 
-<h2>Patient ID Knoew</h2>
-  <form method="post">
-    {% csrf_token %}
-    Patient ID : <input type="text" name="patid">
-    <input type="submit">
-  </form>
-<br>
-{% if dc is not None %}
-      {{ dc }}
-{% endif %}
 
-<!--<iframe width="420" height="315"
-src="https://www.youtube.com/embed/tgbNymZ7vqY"
-        allowfullscreen="allowfullscreen"
-        mozallowfullscreen="mozallowfullscreen" 
-        msallowfullscreen="msallowfullscreen" 
-        oallowfullscreen="oallowfullscreen" 
-        webkitallowfullscreen="webkitallowfullscreen">
-</iframe>-->
+
+
 
 
 <video width="420" height="315" controls poster="static\admin\img\Thumbnails\abtn.jpg">
