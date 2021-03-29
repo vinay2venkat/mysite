@@ -40,7 +40,7 @@ pluggy==0.6.0
 prompt-toolkit==1.0.15
 psycopg2==2.7.3.2
 py==1.5.2
-Pygments==2.2.0
+Pygments==2.7.4
 PyJWT==1.5.3
 PySocks==1.6.7
 pytest==3.3.1
